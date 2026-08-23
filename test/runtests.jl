@@ -64,7 +64,7 @@ end
     k = sample_cfg.replica.model.k
     exact_variance = 1 / (beta * k)
     exact_mean_energy = 1 / beta
-    sampled_energy = @. 0.5 * k * abs2(psi)
+    sampled_energy = 0.5 .* k .* abs2.(psi)
 
     @test abs(mean(x)) < 0.08 * sqrt(exact_variance)
     @test abs(mean(y)) < 0.08 * sqrt(exact_variance)
