@@ -21,11 +21,9 @@ function scheduled_edge_groups(K::Int, schedule)
     if !isempty(unknown_names)
         available = join(sort(available_names), ", ")
         unknown = join(unknown_names, ", ")
-
         error("Unknown exchange schedule group(s): $unknown. " * "Available groups: $available")
     end
 
     groups = [pool[name] for name in names]
-
     return (groups=groups, names=names)
 end

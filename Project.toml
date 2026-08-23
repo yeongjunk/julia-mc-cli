@@ -1,0 +1,18 @@
+name = "JuliaMCCLI"
+uuid = "816adb07-4fa1-489b-bbf3-6b0f57cfeecf"
+version = "0.1.0"
+authors = ["yjkim <yeongjun.kim.04@gmail.com>"]
+
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+LMC = "53dc4934-8467-4f08-85b9-d3b192d77677"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+ReplicaExchange = "52bd480a-a86d-4047-9660-0fcaefa78374"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+
+[compat]
+DataFrames = "1.8.2"
+LinearAlgebra = "1.12.0"
+Random = "1.11.0"
+Statistics = "1.11.1"
