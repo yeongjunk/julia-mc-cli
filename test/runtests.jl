@@ -53,10 +53,14 @@ end
     sample_data = run_sample(sample_cfg, eq_data)
 
     samples = sample_data.result.samples
-    @test size(samples, 1) == 1
-    @test size(samples, 3) == 1
+    expected_n_samples = sample_cfg.sampling.n_sweeps ÷ sample_cfg.sampling.sample_every
 
-    psi = vec(samples[1, :, 1])
+    @test ndims(samples) == 2
+    @test size(samples) == (1, expected_n_samples)
+    @test eltype(samples) <: AbstractVector
+    @test all(state -> length(state) == 1, samples)
+
+    psi = first.(vec(samples[1, :]))
     x = real.(psi)
     y = imag.(psi)
 
@@ -64,7 +68,7 @@ end
     k = sample_cfg.replica.model.k
     exact_variance = 1 / (beta * k)
     exact_mean_energy = 1 / beta
-    sampled_energy = 0.5 .* k .* abs2.(psi)
+    sampled_energy = 0.5 * k .* abs2.(psi)
 
     @test abs(mean(x)) < 0.08 * sqrt(exact_variance)
     @test abs(mean(y)) < 0.08 * sqrt(exact_variance)
