@@ -54,9 +54,9 @@ end
 
     samples = sample_data.result.samples
     @test size(samples, 1) == 1
-    @test size(samples, 2) == 1
+    @test size(samples, 3) == 1
 
-    psi = vec(samples[1, 1, :])
+    psi = vec(samples[1, :, 1])
     x = real.(psi)
     y = imag.(psi)
 
