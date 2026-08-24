@@ -30,8 +30,8 @@ function make_gaussian_configs()
     replica = ReplicaConfig(model, betas, 0.05)
     schedule = ["nn_even", "nn_odd"]
 
-    adapt = AdaptConfig(500, 30, 0.05, 0.95, 2.0, 500, 2)
-    equilibration = EquilibrationConfig(schedule, 5, 2_000, 10_000)
+    adapt = AdaptConfig(1000, 50, 0.3, 0.6, 2.0, 1000, 3)
+    equilibration = EquilibrationConfig(schedule, 5, 10_000, 100_000)
     sampling = SamplingConfig(
         schedule,
         5,
@@ -55,12 +55,12 @@ end
     samples = sample_data.result.samples
     expected_n_samples = sample_cfg.sampling.n_sweeps ÷ sample_cfg.sampling.sample_every
 
-    @test ndims(samples) == 2
-    @test size(samples) == (1, expected_n_samples)
-    @test eltype(samples) <: AbstractVector
-    @test all(state -> length(state) == 1, samples)
+    @test ndims(samples) == 3
+    @test size(samples) == (1, 1, expected_n_samples)
+    @test eltype(samples) == ComplexF64
+    
+    psi = vec(samples[1, 1, :])
 
-    psi = first.(vec(samples[1, :]))
     x = real.(psi)
     y = imag.(psi)
 
