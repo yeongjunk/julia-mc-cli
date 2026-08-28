@@ -6,7 +6,7 @@ using DataFrames
 using Statistics
 import LMC
 import LMC.LMCPT
-import ReplicaExchange as RE
+import ParallelTemperingSamplers as RE
 
 include("configurations.jl")
 include("pipeline_data.jl")

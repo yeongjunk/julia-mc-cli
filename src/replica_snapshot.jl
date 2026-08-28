@@ -3,7 +3,7 @@ module ReplicaSnapshots
 using Random: Xoshiro
 import LMC
 import LMC.LMCPT as LMCPT
-import ReplicaExchange as RE
+import ParallelTemperingSamplers as RE
 
 struct ReplicaSnapshot{TB,Tpsi,TE,TS}
     walkerids::Vector{Int}
