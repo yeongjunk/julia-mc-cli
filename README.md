@@ -16,3 +16,7 @@ Pkg.develop(url="https://github.com/yeongjunk/LMC.jl")
 using Pkg
 Pkg.develop(url="https://github.com/yeongjunk/julia-mc-cli.jl")
 ```
+
+## Gaussian example
+Result of the `test/runtests.jl`
+![Gaussian sampling result](test/gaussian.png)
