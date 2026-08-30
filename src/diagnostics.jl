@@ -151,7 +151,7 @@ function summarize_overview_exchange_dict(diagnostics::EquilibrationDiagnostics)
         ) for i in eachindex(diagnostics.edge_groups)
     )
 
-    return sort(dict)
+    return dict
 end
 
 function get_acceptance_info(replica_diagnostics, betas)
